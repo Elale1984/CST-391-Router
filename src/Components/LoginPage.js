@@ -1,26 +1,29 @@
 import React from 'react';
-import {useLocation, useNavigation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const LoginPage = (props) => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const handleLogin = () => {
-        console.log('handleLogin from ', from);
-        console.log('handleLogin navigate ', navigate);
+        const { from } = location.state || { from: { pathname: '/' } };
+        console.log('handleLogin from', from);
+        console.log('handleLogin navigate', navigate);
         props.onClick(from, navigate);
     };
 
-    console.log('in LoginPage', props);
-    let navigate = useNavigation();
-    let location = useLocation();
-
-    let state = location.state;
-    let from = state?.from?.pathname ? state.from.pathname : '/';
+    let from = '/';
     let text = '';
-    if (from !== '/') text = <h3>You must login to visit "{from}"</h3>;
+
+    if (location.state && location.state.from) {
+        from = location.state.from.pathname;
+        text = <h3>You must log in to visit "{from}"</h3>;
+    }
 
     return (
         <div>
             {text}
-            <button onClick={() => handleLogin()}>Login</button>
+            <button onClick={handleLogin}>Login</button>
         </div>
     );
 };

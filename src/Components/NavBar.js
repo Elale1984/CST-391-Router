@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
+
 const NavBar = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
@@ -13,24 +14,26 @@ const NavBar = () => {
                 data-target='#navbarNavAltMarkup'
                 aria-controls='navbarNavAltMarkup'
                 aria-expanded='false'
-                area-label='Toggle navigation'
+                aria-label='Toggle navigation'
             >
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id='navbarNafAltMarkup'>
                 <div className="navbar-nav">
-                    <span className="nav-item nav-link active" href='#'>
-                        <link to='/about'>About</link>
+                    <span className="nav-item">
+                      <Link to="/about" className="nav-link active">
+                        About
                         <span className="sr-only">(current)</span>
+                      </Link>
                     </span>
                     <span className="nav-item nav-link active" href='#'>
-                        <link to='/contact'>Contact Us</link>
+                        <Link to='/contact'>Contact Us</Link>
                     </span>
                     <span className="nav-item nav-link active" href='#'>
-                        <link to='/user/Ned Navigator'>User</link>
+                        <Link to='/user/Ned Navigator'>User</Link>
                     </span>
                     <span className="nav-item nav-link active" href='#'>
-                        <link to='/login'>Login</link>
+                        <Link to='/login'>Login</Link>
                     </span>
                 </div>
             </div>
